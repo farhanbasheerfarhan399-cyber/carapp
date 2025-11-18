@@ -236,3 +236,4 @@ export const PublishRideForm: React.FC<{
     </div>
   );
 };
+export default PublishRideForm;
