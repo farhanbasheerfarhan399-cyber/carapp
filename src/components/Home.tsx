@@ -5,10 +5,10 @@ export default function Home() {
   return (
     <>
       {/* Navbar */}
-      <Navbar />
+      <Navbar children={undefined} />
 
       {/* Main Content */}
-      <main className="pt-24 bg-gray-50 min-h-screen">
+      <main className="pt-0 bg-gray-50 min-h-screen">
 
         {/* Hero Section */}
         <section className="w-full bg-gradient-to-r from-blue-500 to-blue-700 py-20">

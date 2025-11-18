@@ -1,25 +1,37 @@
 "use client";
+
+import React from "react";
 import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="text-blue-600 font-bold text-xl">RideShare</div>
+    <nav className="w-full bg-white shadow-md">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <h1 className="text-xl font-bold text-blue-600">RideShare</h1>
 
-        <div className="hidden md:flex gap-6 text-gray-700">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
+        {/* Menu */}
+        <div className="flex items-center gap-6">
+          <Link href="/" className="text-gray-700 hover:text-gray-900">
+            Home
+          </Link>
+          <Link href="/about" className="text-gray-700 hover:text-gray-900">
+            About
+          </Link>
 
-          {/* Make sure this matches your folder name */}
           <Link
             href="/Publish"
-            className="bg-blue-600 text-white px-4 py-2 rounded-md"
+            className="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700"
           >
             Publish a Ride
           </Link>
 
-          <Link href="/login">Login</Link>
+          <Link
+            href="/Login"
+            className="flex items-center gap-2 text-gray-700 hover:text-gray-900"
+          >
+            Login
+          </Link>
         </div>
       </div>
     </nav>
