@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 // Navbar Component
@@ -121,6 +122,7 @@ export const RideShareHomepage = () => {
     to: "",
     date: ""
   });
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -199,7 +201,8 @@ export const RideShareHomepage = () => {
       <div className="max-w-6xl mx-auto px-6 py-12">
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">Available Rides</h2>
 
-        <div className="space-y-4">
+        <div className="space-y-4"
+        onClick={()=>router.push('/ridecard')}>
           {sampleRides.map((ride, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
               <div className="flex justify-between items-center">
