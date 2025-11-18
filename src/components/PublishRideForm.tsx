@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Navbar from "../layout/Navbar";
 
 interface RideFormData {
   startingLocation: string;
@@ -13,31 +14,7 @@ interface RideFormData {
 }
 
 // Navbar Component
-const Navbar = () => {
-  return (
-    <nav className="w-full bg-white shadow-sm sticky top-0 z-50">
-      <div className="w-full">
-        <div className="flex justify-between items-center px-6 py-4">
-          <a href="/" className="flex items-center gap-2 text-blue-600 font-semibold text-lg">
-            🚗 RideShare
-          </a>
 
-          <div className="flex gap-6 text-gray-700">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a
-              href="/Publish"
-              className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700"
-            >
-              Publish a Ride
-            </a>
-            <a href="/Login">Login</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-};
 
 export const PublishRideForm: React.FC<{
   onPublish?: (data: RideFormData) => void;
@@ -64,8 +41,8 @@ export const PublishRideForm: React.FC<{
       <Navbar />
 
       {/* Form Container */}
-      <div className="max-w-2xl mx-auto p-8 bg-white shadow-sm rounded-lg mt-8">
-        <h2 className="text-xl font-semibold mb-6 flex items-center gap-2 text-blue-600">
+      <div className="max-w-1xl mx-auto p-8 bg-white shadow-sm rounded-lg mt-8">
+        <h2 className="text-1xl font-semibold mb-6 flex items-center gap-2 text-blue-600">
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
             <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
           </svg>
