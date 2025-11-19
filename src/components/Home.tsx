@@ -2,38 +2,39 @@
 
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import Navbar from "../layout/Navbar";
 
 // Navbar Component
-const Navbar = () => {
-  return (
-    <nav className="w-full bg-white shadow-sm sticky top-0 z-50">
-      <div className="w-full">
-        <div className="flex justify-between items-center px-6 py-4">
-          <a href="/" className="flex items-center gap-2 text-blue-600 font-semibold text-lg">
-            🚗 RideShare
-          </a>
+// const Navbar = () => {
+//   return (
+//     <nav className="w-full bg-white shadow-sm sticky top-0 z-50">
+//       <div className="w-full">
+//         <div className="flex justify-between items-center px-6 py-4">
+//           <a href="/" className="flex items-center gap-2 text-blue-600 font-semibold text-lg">
+//             🚗 RideShare
+//           </a>
 
-          <div className="flex gap-6 text-gray-700 items-center">
-            <a href="/" className="hover:text-gray-900">Home</a>
-            <a href="/about" className="hover:text-gray-900">About</a>
-            <a
-              href="/Publish"
-              className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700"
-            >
-              Publish a Ride
-            </a>
-            <a href="/Login" className="flex items-center gap-1 hover:text-gray-900">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              Login
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-};
+//           <div className="flex gap-6 text-gray-700 items-center">
+//             <a href="/" className="hover:text-gray-900">Home</a>
+//             <a href="/about" className="hover:text-gray-900">About</a>
+//             <a
+//               href="/Publish"
+//               className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700"
+//             >
+//               Publish a Ride
+//             </a>
+//             <a href="/Login" className="flex items-center gap-1 hover:text-gray-900">
+//               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+//               </svg>
+//               Login
+//             </a>
+//           </div>
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
 
 // Sample ride data
 const sampleRides = [
