@@ -19,6 +19,13 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Placeholder for logout logic
+  const handleLogout = () => {
+    setIsDropdownOpen(false);
+    // Add your actual logout logic here (e.g., clearing tokens, redirecting)
+    console.log("User logged out"); 
+  };
+
   return (
     <nav className="w-full bg-white shadow-md">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -80,6 +87,14 @@ export default function Navbar() {
                 >
                   Dashboard
                 </Link>
+                
+                {/* ADDED LOGOUT BUTTON HERE */}
+                <button
+                  onClick={handleLogout}
+                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
+                  Logout
+                </button>
               </div>
             )}
           </div>
