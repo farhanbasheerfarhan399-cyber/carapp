@@ -42,7 +42,7 @@ export default function Navbar() {
           </Link>
 
           <Link
-            href="/Publish"
+            href="/publish"
             className="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700"
           >
             Publish a Ride
