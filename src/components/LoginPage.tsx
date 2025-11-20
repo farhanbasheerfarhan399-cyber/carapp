@@ -2,14 +2,51 @@
 
 import { useState } from "react";
 import { FiMail, FiLock } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login details:", { email, password });
+    setLoading(true);
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+        credentials: "include", // ✅ important: store cookie from backend
+      });
+
+      const data = await res.json();
+      console.log("LOGIN RES:", data);
+
+      if (!res.ok) {
+        setErrorMsg(data.message || "Login failed!");
+        setLoading(false);
+        return;
+      }
+
+      // Optional: also store token in localStorage for frontend use
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
+
+      // Redirect to home page
+      router.push("/Home");
+    } catch (error) {
+      setErrorMsg("Something went wrong. Try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -21,13 +58,18 @@ export default function LoginPage() {
           <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center shadow">
             🚗
           </div>
-          <h2 className="mt-4 text-2xl font-semibold text-gray-900">Welcome Back</h2>
+          <h2 className="mt-4 text-2xl font-semibold text-gray-900">
+            Welcome Back
+          </h2>
           <p className="text-gray-500 text-sm">Login to your RideShare account</p>
         </div>
 
+        {errorMsg && (
+          <p className="mt-4 text-red-500 text-center text-sm">{errorMsg}</p>
+        )}
+
         {/* Form */}
         <form onSubmit={handleLogin} className="mt-8 space-y-5">
-
           {/* Email */}
           <div>
             <label className="text-gray-700 text-sm font-medium">Email</label>
@@ -60,48 +102,13 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Remember + Forgot */}
-          <div className="flex justify-between items-center text-sm">
-            <label className="flex items-center gap-2">
-              <input type="checkbox" />
-              <span className="text-gray-600">Remember me</span>
-            </label>
-            <a href="#" className="text-blue-600 hover:underline">
-              Forgot password?
-            </a>
-          </div>
-
           {/* Login button */}
           <button
             type="submit"
+            disabled={loading}
             className="w-full bg-blue-600 text-white py-2.5 rounded-lg font-medium hover:bg-blue-700 transition"
           >
-            Login
-          </button>
-
-          {/* Divider */}
-          <div className="flex items-center gap-3">
-            <hr className="flex-1 border-gray-300" />
-            <span className="text-gray-500 text-sm">OR</span>
-            <hr className="flex-1 border-gray-300" />
-          </div>
-
-          {/* Google Login */}
-          <button
-            type="button"
-            className="w-full border py-2.5 rounded-lg flex items-center justify-center gap-2 text-gray-700 hover:bg-gray-50 transition"
-          >
-            <span className="text-xl">🌐</span>
-            Continue with Google
-          </button>
-
-          {/* Facebook Login */}
-          <button
-            type="button"
-            className="w-full border py-2.5 rounded-lg flex items-center justify-center gap-2 text-gray-700 hover:bg-gray-50 transition"
-          >
-            <span className="text-xl">📘</span>
-            Continue with Facebook
+            {loading ? "Logging in..." : "Login"}
           </button>
 
           {/* Signup */}
