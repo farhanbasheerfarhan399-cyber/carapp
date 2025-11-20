@@ -490,6 +490,14 @@ export const RideDetailsPage: React.FC = () => {
     price: "₹450",
   };
 
+  // NEW: Function to open Google Maps with the route
+  const handleOpenRouteMap = () => {
+    const origin = encodeURIComponent(rideData.from);
+    const destination = encodeURIComponent(rideData.to);
+    const url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}`;
+    window.open(url, "_blank");
+  };
+
   const handleContactDriver = () => {
     setActionType("contact");
     setIsModalOpen(true);
@@ -512,7 +520,7 @@ export const RideDetailsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      
+      <Navbar />
 
       <div className="max-w-4xl mx-auto px-6 py-8">
         {/* Back Button */}
@@ -542,8 +550,12 @@ export const RideDetailsPage: React.FC = () => {
           {/* Blue Header Section */}
           <div className="bg-blue-600 p-8 text-white">
             <div className="flex justify-between items-center mb-6">
-              {/* From Section */}
-              <div className="flex-1">
+              {/* From Section - Added onClick and cursor styling */}
+              <div 
+                className="flex-1 cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={handleOpenRouteMap}
+                title="View route on Google Maps"
+              >
                 <div className="flex items-center gap-2 mb-1">
                   <svg
                     className="w-5 h-5"
@@ -574,8 +586,12 @@ export const RideDetailsPage: React.FC = () => {
                 <div className="w-full max-w-xs border-t-2 border-white opacity-30 mt-6"></div>
               </div>
 
-              {/* To Section */}
-              <div className="flex-1 text-right">
+              {/* To Section - Added onClick and cursor styling */}
+              <div 
+                className="flex-1 text-right cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={handleOpenRouteMap}
+                title="View route on Google Maps"
+              >
                 <div className="flex items-center justify-end gap-2 mb-1">
                   <span className="text-sm">To</span>
                   <svg
