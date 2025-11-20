@@ -72,7 +72,7 @@ export default function Navbar() {
           <Link href="/" className="text-gray-700 hover:text-gray-900">Home</Link>
           <Link href="/about" className="text-gray-700 hover:text-gray-900">About</Link>
           <Link
-            href="/Publish"
+            href="/publish"
             className="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700"
           >
             Publish a Ride
